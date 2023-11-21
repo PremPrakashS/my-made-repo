@@ -15,7 +15,7 @@ def create_date_table(start='2000-01-01', end='2050-12-31'):
 
 
 def get_source_data(path, delimiter):
-    df = pd.read_csv(path)
+    df = pd.read_csv(path, delimiter = delimiter)
     return df
 
 
@@ -31,8 +31,8 @@ def drop_columns(df, col_list):
 def fix_date_format(df, col_list):
     for col in col_list:
         df[col] = pd.to_datetime(df[col], format='%m/%d/%Y %I:%M:%S %p')
-        
     return df
+
 
 def transform_covid_data(df):
     covid_data_col_del = ['county','state','Lat','Lon','fips','people_tested']
@@ -49,9 +49,9 @@ def transform_covid_data(df):
     }
     date_columns = ['Date']
     
-    df = df.drop_columns(covid_data_col_del, axis=1, inplace=True)
-    df = df.rename_columns(df, covid_data_col_rename)
-    df = df.fix_date_format(df, date_columns)
+    df = drop_columns(df, covid_data_col_del)
+    df = rename_columns(df, covid_data_col_rename)
+    df = fix_date_format(df, date_columns)
     
     return df
 
@@ -75,9 +75,9 @@ def transform_crime_data(df):
     }
     date_columns = ['Date_Reported', 'Date_Occured']
     
-    df = df.drop_columns(crime_data_col_del, axis=1, inplace=True)
-    df = df.rename_columns(df, crime_data_col_rename)
-    df = df.fix_date_format(df, date_columns)
+    df = drop_columns(df, crime_data_col_del)
+    df = rename_columns(df, crime_data_col_rename)
+    df = fix_date_format(df, date_columns)
         
     df.Weapon_Code = df.Weapon_Code.fillna(-1)
     df.Weapon_Code = df.Weapon_Code.astype(int)
@@ -127,6 +127,7 @@ def automated_data_pipeline(details):
     covid_df = transform_covid_data(covid_df)
     crime_df = transform_crime_data(crime_df)
     
+    URL = f"sqlite:///{details['target_db_path']}\\{details['target_db_name']}.db"
     engine = create_engine(f"sqlite:///{details['target_db_path']}\\{details['target_db_name']}.db")
     
     write_to_target(covid_df, engine, details['covid_data']['target_table'])
@@ -150,6 +151,7 @@ if __name__ == '__main__':
             'end':'2021-12-31'
         },
         'target_db_path' : '..\\data',
+        
         'target_db_name' : 'made-project01'
     }
 
