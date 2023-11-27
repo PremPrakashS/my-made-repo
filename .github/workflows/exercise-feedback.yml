@@ -3,7 +3,7 @@ name: Exercise Feedback
 on:
   push:
     branches:
-    - exercise
+    - main
     paths:
     - exercises/**
 
