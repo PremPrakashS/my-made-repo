@@ -29,8 +29,8 @@ pipeline TrainstopsPipeline {
     }
 
     block TrainStopsSQLloader oftype SQLiteLoader{
-        table: 'TrainStops03';
-        file: 'TrainStops03.db';
+        table: 'trainstops';
+        file: 'trainstops.db';
     }
 }
 
