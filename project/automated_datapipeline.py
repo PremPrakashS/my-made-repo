@@ -34,6 +34,10 @@ def fix_date_format(df, col_list):
     return df
 
 
+def write_to_target(df, engine, table_name):
+    df.to_sql(table_name, engine, index=False)
+    
+
 def transform_covid_data(df):
     covid_data_col_del = ['county','state','Lat','Lon','fips','people_tested']
     covid_data_col_rename = {
@@ -115,14 +119,11 @@ def transform_crime_data(df):
     df['Victim_Descent_Desc'] = df['Victim_Descent'].map(descent_dict)   
     return df
 
-
-def write_to_target(df, engine, table_name):
-    df.to_sql(table_name, engine, index=False)
     
 def automated_data_pipeline(details):
     covid_df = get_source_data(details['covid_data']['source'], details['covid_data']['delimiter'])
     crime_df = get_source_data(details['crime_data']['source'], details['crime_data']['delimiter'])
-    date_df = create_date_table(details['date_info']['start'], details['date_info']['end'])
+    date_df = create_date_table(details['date_table']['start'], details['date_table']['end'])
     
     covid_df = transform_covid_data(covid_df)
     crime_df = transform_crime_data(crime_df)
@@ -132,6 +133,7 @@ def automated_data_pipeline(details):
     
     write_to_target(covid_df, engine, details['covid_data']['target_table'])
     write_to_target(crime_df, engine, details['crime_data']['target_table'])
+    write_to_target(date_df, engine, details['date_table']['target_table'])
     
 
 if __name__ == '__main__':
@@ -146,9 +148,10 @@ if __name__ == '__main__':
             'delimiter' : ',',
             'target_table' : 'crime_data'
         },
-        'date_info' : {
+        'date_table' : {
             'start':'2020-01-01',
-            'end':'2021-12-31'
+            'end':'2021-12-31',
+            'target_table' : 'Calender_data'
         },
         'target_db_path' : '..\\data',
         
