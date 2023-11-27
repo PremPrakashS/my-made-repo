@@ -34,6 +34,7 @@ pipeline TrainstopsPipeline {
     }
 }
 
+
 valuetype VerkehrCode oftype text {
     constraints: [
         VerkehrCodeAllowList,
