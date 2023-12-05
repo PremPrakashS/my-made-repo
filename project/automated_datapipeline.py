@@ -11,6 +11,7 @@ def create_date_table(start='2000-01-01', end='2050-12-31'):
     df["Weekday"] = df.Date.dt.weekday
     df["Weekday_Name"] = df.Date.dt.day_name()
     df["Quarter"] = df.Date.dt.quarter
+    df = fix_date_format(df, ["Date"])
     return df
 
 
@@ -30,7 +31,9 @@ def drop_columns(df, col_list):
 
 def fix_date_format(df, col_list):
     for col in col_list:
+        # df[col] = pd.to_datetime(df[col], format='%m/%d/%Y %I:%M:%S %p') 
         df[col] = pd.to_datetime(df[col], format='%m/%d/%Y %I:%M:%S %p')
+        df[col] = df[col].dt.strftime('%Y-%m-%d')    
     return df
 
 
@@ -155,7 +158,7 @@ if __name__ == '__main__':
         },
         'target_db_path' : '..\\data',
         
-        'target_db_name' : 'made-project01'
+        'target_db_name' : 'made-project'
     }
 
-automated_data_pipeline(details=src_tgt_details)
+    automated_data_pipeline(details=src_tgt_details)
