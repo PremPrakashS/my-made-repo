@@ -95,7 +95,7 @@ if __name__ == '__main__':
         },
         'target_db_path' : '..\\data',
         
-        'target_db_name' : 'made-project01'
+        'target_db_name' : 'made-project'
     }
 
     automated_data_pipeline(details=src_tgt_details)
