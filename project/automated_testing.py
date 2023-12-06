@@ -1,6 +1,7 @@
-from automated_datapipeline import automated_data_pipeline
 import pandas as pd
 import sqlite3
+from automated_datapipeline import automated_data_pipeline, create_date_table
+from pandas.testing import assert_frame_equal
 
 def check_date_format(df, date_col):
     date_format = '%Y-%m-%d'
@@ -22,7 +23,11 @@ def check_column_names(df, expected_column_names):
         
 def check_null_values(df, cols):
     for col in cols:
-        assert df[col].isna().any() == False, f'Column {col} contains null values'      
+        assert df[col].isna().any() == False, f'Column {col} contains null values'
+        
+
+def compare_dataframes(df1, df2):
+    assert_frame_equal(df1, df2)    
 
 
 def check_crime_data_table(df):
@@ -68,6 +73,18 @@ def check_calender_data_table(df):
     cols_to_check_null = ['Date']
     check_null_values(df, cols_to_check_null)
 
+    
+def test_load(details):
+    date_df = create_date_table(details['date_table']['start'], details['date_table']['end'])
+    
+    sql_path = f"{details['target_db_path']}\\{details['target_db_name']}.db"
+    conn = sqlite3.connect(sql_path)
+    date_table = pd.read_sql_query("SELECT * FROM Calender_data", conn)
+
+    compare_dataframes(date_df, date_table)
+    
+    conn.close()
+
         
 def read_sql_table(db_path, table_name):
     query = f"SELECT * FROM {table_name}"
@@ -95,12 +112,14 @@ if __name__ == '__main__':
         },
         'target_db_path' : '..\\data',
         
-        'target_db_name' : 'made-project'
+        'target_db_name' : 'made-project_1'
     }
 
     automated_data_pipeline(details=src_tgt_details)
     
-    db_path = f"{src_tgt_details['target_db_path']}\\{src_tgt_details["target_db_name"]}.db"
+    test_load(src_tgt_details)
+        
+    db_path = f"{src_tgt_details['target_db_path']}\\{src_tgt_details['target_db_name']}.db"
     crime_data = read_sql_table(db_path, src_tgt_details['crime_data']['target_table'])
     covid_data = read_sql_table(db_path, src_tgt_details['covid_data']['target_table'])
     calender_data = read_sql_table(db_path, src_tgt_details['date_table']['target_table'])

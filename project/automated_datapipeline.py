@@ -1,16 +1,17 @@
 import pandas as pd
 from sqlalchemy import create_engine, TEXT, FLOAT, BIGINT
+import numpy as np
 
 
 def create_date_table(start='2000-01-01', end='2050-12-31'):
     df = pd.DataFrame({"Date": pd.date_range(start, end)})
-    df["Day"] = df.Date.dt.day
-    df["Month"] = df.Date.dt.month
-    df["Year"] = df.Date.dt.year
+    df["Day"] = df.Date.dt.day.astype(np.int64)
+    df["Month"] = df.Date.dt.month.astype(np.int64)
+    df["Year"] = df.Date.dt.year.astype(np.int64)
     df["Month_Name"] = df.Date.dt.month_name()
-    df["Weekday"] = df.Date.dt.weekday
+    df["Weekday"] = df.Date.dt.weekday.astype(np.int64)
     df["Weekday_Name"] = df.Date.dt.day_name()
-    df["Quarter"] = df.Date.dt.quarter
+    df["Quarter"] = df.Date.dt.quarter.astype(np.int64)
     df = fix_date_format(df, ["Date"])
     return df
 
@@ -131,7 +132,6 @@ def automated_data_pipeline(details):
     covid_df = transform_covid_data(covid_df)
     crime_df = transform_crime_data(crime_df)
     
-    URL = f"sqlite:///{details['target_db_path']}\\{details['target_db_name']}.db"
     engine = create_engine(f"sqlite:///{details['target_db_path']}\\{details['target_db_name']}.db")
     
     write_to_target(covid_df, engine, details['covid_data']['target_table'])
