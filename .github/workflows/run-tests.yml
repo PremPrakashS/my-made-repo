@@ -4,29 +4,23 @@ on:
     push:
         branches:
         - main
-        # paths:
-        # - project/**
+        paths:
+        - project/**
 
 jobs:
     tests:
         runs-on: ubuntu-latest
-        # defaults:
-        #   run:
-        #     working-directory: ../project/tests.sh
 
         steps:
         - name: Checkout repository
           uses: actions/checkout@v3
-          # with:
-          #   path: main
-        
-        # - name: Set up Python 3.11
-        #   uses: actions/setup-python@v4
-        #   with:
-        #     python-version: 3.11
 
-        - name: List contents of the project directory
-          run: ls -l ./
+        
+        - name: Set up Python 3.11
+          uses: actions/setup-python@v4
+          with:
+            python-version: 3.11
+
             
-        # - name: Run Tests
-        #   run: ./project/tests.sh
+        - name: Run Tests
+          run: ./project/tests.sh
