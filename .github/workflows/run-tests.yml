@@ -1,17 +1,21 @@
-name: Project Tests
+name: Run Tests
 
 on:
     push:
         branches:
         - main
-        paths:
-        - project/**
+        # paths:
+        # - project/**
 
 jobs:
     tests:
         runs-on: ubuntu-latest
+        # defaults:
+        #   run:
+        #     working-directory: ../project/tests.sh
+
         steps:
-        - name: Checkout
+        - name: Checkout repository
           uses: actions/checkout@v3
           with:
             path: main
@@ -22,4 +26,4 @@ jobs:
             python-version: 3.11
             
         - name: Run Tests
-          run: ../project/tests.sh
+          run: ./project/tests.sh
