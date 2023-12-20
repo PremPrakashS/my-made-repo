@@ -3,6 +3,7 @@ import sqlite3
 from automated_datapipeline import automated_data_pipeline, create_date_table
 from pandas.testing import assert_frame_equal
 
+# This function checks if the date format is proper
 def check_date_format(df, date_col):
     date_format = '%Y-%m-%d'
     
