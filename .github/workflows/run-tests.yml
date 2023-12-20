@@ -21,6 +21,8 @@ jobs:
           with:
             python-version: 3.11
 
+        - name: Make the script files executable
+          run: chmod +x ./project/tests.sh
             
         - name: Run Tests
           run: ./project/tests.sh
