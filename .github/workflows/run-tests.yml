@@ -26,7 +26,7 @@ jobs:
             python-version: 3.11
 
         - name: List contents of the project directory
-          run: ls -l ./project
+          run: ls -l
             
         - name: Run Tests
           run: ./project/tests.sh
