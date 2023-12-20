@@ -125,6 +125,11 @@ if __name__ == '__main__':
     covid_data = read_sql_table(db_path, src_tgt_details['covid_data']['target_table'])
     calender_data = read_sql_table(db_path, src_tgt_details['date_table']['target_table'])
     
-    check_calender_data_table(calender_data)    
+    print('>> Testing Calendar Data')      
+    check_calender_data_table(calender_data)
+
+    print('>> Testing Crime Data')   
     check_crime_data_table(crime_data)
+    
+    print('>> Testing Covid Data') 
     check_covid_data_table(covid_data)
