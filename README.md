@@ -3,7 +3,7 @@
 ## Project Overview
 This project aims to analyze and find correlations between COVID-19 data and crime data in Los Angeles for the period of 2021 to 2022. Our goal is to uncover insights into how the pandemic has impacted crime patterns and explore the interplay between public health and social dynamics in LA.
 
-[**Project Report**](project\report.ipynb)
+[**Project Report**](project/report.ipynb)
 
 ### Datasets
 1. [**COVID Data (2021-2023)**](https://catalog.data.gov/dataset/la-county-covid-cases): This dataset includes daily counts of COVID-19 cases, deaths, across Los Angeles and California.
@@ -28,7 +28,7 @@ pip install -r requirements.txt
 
 ## Data Pipeline and Testing
 
-### Data Pipeline
+### Data Pipeline [here](project/automated_datapipeline.py)
 Our project includes an automated data pipeline that performs the following functions:
 1. **Data Fetching**: Automatically retrieves the latest COVID and crime datasets from specified online sources.
 2. **Data Transformation and Cleaning**: Applies a series of transformations and cleaning processes to ensure data quality and fix issues or errors in the datasets.
@@ -36,13 +36,13 @@ Our project includes an automated data pipeline that performs the following func
 
 This pipeline ensures our data is up-to-date and maintains integrity for reliable analysis.
 
-### Test Script
+### Test Script [here](project/automated_testing.py)
 We have developed a comprehensive test script to ensure the accuracy and efficiency of our data pipeline. The script includes tests for:
 - Data fetching and loading processes.
 - Data cleaning and transformation rules.
 - Overall data integrity and consistency checks.
 
-### Automated Workflow
+### Automated Workflow [here](.github\workflows/run-tests.yml)
 To maintain the quality and reliability of our pipeline, we have set up an automated workflow using GitHub Actions. This workflow includes:
 - **Continuous Integration Tests**: Runs our test script automatically every time there is a push to the main branch. This ensures that any new changes do not disrupt the pipeline's functionality.
 
@@ -52,10 +52,10 @@ This automated workflow helps in maintaining a robust and error-free data pipeli
 Provide detailed instructions on how to execute the data pipeline and run the test scripts. Include any necessary commands or steps to set up the environment.
 
 ```bash
-# Example command to run the data pipeline
+# command to run the data pipeline
 python automated_datapipeline.py
 
-# Example command to execute the test script
+# command to execute the test script
 python automated_testing.py
 ```
 
