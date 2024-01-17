@@ -4,6 +4,7 @@
 This project aims to analyze and find correlations between COVID-19 data and crime data in Los Angeles for the period of 2020 to 2023. Our goal is to uncover insights into how the pandemic has impacted crime patterns and explore the interplay between public health and social dynamics in LA.
 
 [**Project Report**](project/report.ipynb)
+[**Slides**](project/Report_Slides.pptx)
 
 ### Datasets
 1. [**COVID Data (2021-2023)**](https://catalog.data.gov/dataset/la-county-covid-cases): This dataset includes daily counts of COVID-19 cases, deaths, across Los Angeles and California.
