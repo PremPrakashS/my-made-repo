@@ -1,10 +1,15 @@
-# Los Angeles COVID and Crime Data Analysis (2021-2022)
+# Los Angeles COVID and Crime Data Analysis (2020-2023)
+
+<img src="project\Pictures\Covid.jpg" width="700" height="466">
 
 ## Project Overview
 This project aims to analyze and find correlations between COVID-19 data and crime data in Los Angeles for the period of 2020 to 2023. Our goal is to uncover insights into how the pandemic has impacted crime patterns and explore the interplay between public health and social dynamics in LA.
 
-[**Project Report**](project/report.ipynb)
-[**Slides**](project/Report_Slides.pptx)
+[**Project Report**](project/report.ipynb): Analysis both datasets to create visual representation.
+
+[**Presentation Slides**](project/slides.pptx)
+
+[**Presenation Video Link**](project\presentation-video.md)
 
 ### Datasets
 1. [**COVID Data (2021-2023)**](https://catalog.data.gov/dataset/la-county-covid-cases): This dataset includes daily counts of COVID-19 cases, deaths, across Los Angeles and California.
@@ -78,7 +83,3 @@ I would like to extend my gratitude to our tutors **Philip Heltweg** and **Georg
 
 ## License
 This project is licensed under the CC0-1 Universal License - see the [LICENSE.md](LICENSE) file for details.
-
-
-## Project Status
-This project is currently under development.
