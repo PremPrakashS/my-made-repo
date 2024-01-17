@@ -35,10 +35,15 @@ The dataset contains approx 800K records with the crime data for the LA County (
 
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
-1. Issue [#1][i1] - Identify the Datasourse.
-2. Issue [#2][i2] - Create poject plan.
-3. Issue [#3][i3] - Understand and clean the dataset. 
+1. [Identify the Datasourse][i1] <br>
+2. [Create poject plan][i2] <br>
+3. [Understand and clean the dataset][i3] <br>
+4. [Create Data Pipeline][i4] <br>
+5. [Create a project report][i4]
 
 [i1]: https://github.com/PremPrakashS/my-made-repo/issues/1
 [i2]: https://github.com/PremPrakashS/my-made-repo/issues/2
 [i3]: https://github.com/PremPrakashS/my-made-repo/issues/3
+[i4]: https://github.com/PremPrakashS/my-made-repo/issues/6
+[i5]: https://github.com/PremPrakashS/my-made-repo/issues/7
+
