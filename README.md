@@ -1,7 +1,7 @@
 # Los Angeles COVID and Crime Data Analysis (2021-2022)
 
 ## Project Overview
-This project aims to analyze and find correlations between COVID-19 data and crime data in Los Angeles for the period of 2021 to 2022. Our goal is to uncover insights into how the pandemic has impacted crime patterns and explore the interplay between public health and social dynamics in LA.
+This project aims to analyze and find correlations between COVID-19 data and crime data in Los Angeles for the period of 2020 to 2023. Our goal is to uncover insights into how the pandemic has impacted crime patterns and explore the interplay between public health and social dynamics in LA.
 
 [**Project Report**](project/report.ipynb)
 
