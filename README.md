@@ -80,4 +80,4 @@ This project is licensed under the CC0-1 Universal License - see the [LICENSE.md
 
 
 ## Project Status
-This project is currently in progress.
+This project is currently under development.
