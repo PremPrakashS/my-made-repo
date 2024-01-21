@@ -82,7 +82,7 @@ constraint Geraet_aktivAllowList oftype AllowlistConstraint  {
     allowlist: ["Ja", "Nein"];
 }
 
-valuetype Month oftype decimal  {
+valuetype Month oftype integer  {
     constraints: [
         MonthRange,
     ];
