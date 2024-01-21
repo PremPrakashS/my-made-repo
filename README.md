@@ -9,7 +9,7 @@ This project aims to analyze and find correlations between COVID-19 data and cri
 
 [**Presentation Slides**](project/slides.pptx)
 
-[**Presenation Video Link**](project\presentation-video.md)
+[**Presenation Video Link**](project/presentation-video.md)
 
 ### Datasets
 1. [**COVID Data (2021-2023)**](https://catalog.data.gov/dataset/la-county-covid-cases): This dataset includes daily counts of COVID-19 cases, deaths, across Los Angeles and California.
